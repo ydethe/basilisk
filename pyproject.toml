@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=64.0", "cython", "pytest-runner", "conan==1.59.0", "pytest", "datashader", "holoviews"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Basilisk_Sim"
+dynamic = ["version"]
+description = "Astrodynamics Simulation Library"
+authors = [
+    { name = "Hanspeter Schaub", email = "hanspeter.schaub@colorado.edu" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+keywords = [
+    "astrodynamics",
+    "simulation",
+    "library",
+    "swig",
+    "astronomy",
+    "astrophysics",
+    "cosmology",
+    "space",
+    "science",
+    "units",
+    "modeling",
+    "models",
+]
+dependencies = [
+    "matplotlib>=3.5.3,<4.0.0",
+    "numpy>=1.21.6,<2.0.0",
+    "pillow>=9.5.0,<10.0.0",
+    "pandas>=1.3.5,<2.0.0",
+    "holoviews>=1.16.0,<2.0.0",
+    "datashader>=0.14.4,<1.0.0",
+    "colorama>=0.4.6,<1.0.0",
+    "tqdm>=4.65.0,<5.0.0",
+    "pytest>=7.3.1,<8.0.0",
+]
+requires-python = ">=3.8,<4"
+
+[project.urls]
+"Homepage" = "https://hanspeterschaub.info/basilisk/"
+"Documentation" = "http://hanspeterschaub.info/basilisk/index.html"
+"Source" = "https://github.com/AVSLab/basilisk"
+"Tracker" = "https://github.com/AVSLab/basilisk/issues"
+
+[project.optional-dependencies]
+doc = [
+    "sphinx",
+    "breathe",
+    "sphinx_rtd_theme==0.5.1",
+    "recommonmark",
+    "pytest-xdist",
+    "pytest-html",
+    "docutils",
+]
+test = ["pytest~=7.1.3", "pytest-xdist", "flake8~=6.0.0"]
+
+[tool.setuptools.dynamic]
+version = {file = "docs/source/bskVersion.txt"}
+# Can be retrieved programmatically with :
+# 'importlib_metadata.version("Basilisk_Sim")'
+
+[tool.setuptools]
+packages = ["Basilisk"]
+package-dir = {"" = "dist3"}
