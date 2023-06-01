@@ -1,5 +1,5 @@
 import toml
-from setuptools import Extension, Distribution,setup
+from setuptools import Extension, Distribution, setup
 from setuptools.command.build_ext import build_ext
 import argparse
 import os
@@ -484,6 +484,7 @@ def conan_build():
     print(statusColor + "Running cmake:" + endColor)
     print(cmakeCmdString)
     os.system(cmakeCmdString)
+
 
 def zipdir(path: Path, ziph: zipfile.ZipFile):
     """Add a directory to a zip file
