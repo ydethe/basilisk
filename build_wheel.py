@@ -21,7 +21,7 @@ def zipdir(path: Path, ziph: zipfile.ZipFile):
     From https://stackoverflow.com/a/1855118
 
     """
-    for root, dirs, files in os.walk(path):
+    for root, dirs, files in os.walk(path, followlinks=True):
         for file in files:
             ziph.write(
                 os.path.join(root, file),

@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=64.0", "cython", "pytest-runner", "conan==1.59.0", "pytest", "datashader", "holoviews"]
+requires = ["setuptools>=64.0", "cython", "pytest-runner", "conan==1.59.0", "pytest", "datashader", "holoviews", "toml", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
