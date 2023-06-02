@@ -7,6 +7,7 @@ dist/
 dist3/
 .venv*/*
 *.tmp
+src/simulation/vizard/dataFileToViz/_UnitTest/data*.txt
 *.old
 .pytest_cache 
 docs/html

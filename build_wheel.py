@@ -1,7 +1,5 @@
-# build_wheel.py
-
-import platform
 import argparse
+import platform
 import os
 from pathlib import Path
 import zipfile
@@ -87,6 +85,7 @@ def build():
 
     build_pth = Path("dist3").expanduser().resolve()
     root_pth = Path(os.getcwd()).expanduser().resolve()
+    dist_dir = root_pth / "dist"
 
     # ==========================================
     # egg file creation
@@ -108,12 +107,27 @@ def build():
     # ==========================================
     # wheel file creation
     # ==========================================
-    convert([egg_name], str(root_pth), False)
+    if not dist_dir.exists():
+        dist_dir.mkdir()
+    convert([egg_name], str(dist_dir), False)
     Path(egg_name).unlink()
 
     for whl in root_pth.glob("*.whl"):
-        whl.rename(whl_name)
+        whl.rename(dist_dir / whl_name)
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Wheel builder")
+    parser.add_argument(
+        "-n", "--name", help="Just print the wheel name", action="store_true"
+    )
+    args = parser.parse_args()
+
+    if args.name:
+        print(get_basilik_wheel_name())
+    else:
+        build()
 
 
 if __name__ == "__main__":
-    build()
+    main()
