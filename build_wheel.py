@@ -112,7 +112,7 @@ def build():
     convert([egg_name], str(dist_dir), False)
     Path(egg_name).unlink()
 
-    for whl in root_pth.glob("*.whl"):
+    for whl in root_pth.rglob("*.whl"):
         whl.rename(dist_dir / whl_name)
 
 
